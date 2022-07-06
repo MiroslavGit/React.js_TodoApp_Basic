@@ -1,36 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Neuton:wght@200&family=Vampiro+One&display=swap");
+:root {
+    --dark: #374151;
+    --darker: #1f2937;
+    --darkest: #111827;
+    --grey: #6b7280;
+    --red: #ee1d52;
+    --blue: #69c9d0;
+    --pink: #ec4899;
+    --purple: #8b5cf6;
+    --light: #eee;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--darkest);
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+.title {
+    font-family: "Vampiro One", cursive;
+    color: var(--light);
+    text-align: center;
+    animation: pulse-animation 4s infinite;
+    font-size: 100px !important;
 }
 
-* {
-    margin: 0;
+@keyframes pulse-animation {
+    0% {
+        text-shadow: 2px 2px var(--blue), -2px -2px var(--red), 0 0 1px crimson;
+    }
+    50% {
+        text-shadow: 2px 2px var(--blue), -2px -2px var(--red), 0 0 50px crimson;
+    }
+    100% {
+        text-shadow: 2px 2px var(--blue), -2px -2px var(--red), 0 0 1px crimson;
+    }
 }
 
-body {
-    background: rgb(215, 255, 0);
-    background: linear-gradient(90deg, rgba(215, 255, 0, 1) 0%, rgba(255, 42, 0, 1) 100%, rgba(0, 255, 208, 1) 100%);
+.subtitle {
+    font-family: "Vampiro One", cursive;
+    text-align: center;
+    color: var(--blue);
+    font-size: 30px !important;
 }
 
-h3 {
-    margin-left: 45%;
-    padding-top: 20px;
-}
-
-form {
+.wrapper {
     display: flex;
-    justify-content: space-around;
-    padding: 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+#output {
+    display: table;
+    margin: 0 auto;
+    border-spacing: 0.5rem;
+    color: var(--light);
+    font-family: "Neuton", serif;
+    font-size: 40px !important;
+}
+
+input {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+#input {
+    background-color: var(--darker);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: var(--light);
+}
+
+#add,
+#deleteButton,
+#softButton {
+    color: var(--pink);
+    text-transform: uppercase;
+    font-weight: 700;
+    background-image: linear-gradient(to right, var(--pink), var(--purple));
+    background-clip: "";
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    transition: 0.4s;
+    border: none;
+    font-size: 20px;
+}
+
+#add:hover,
+#deleteButton:hover,
+#softButton:hover {
+    opacity: 0.8;
+}
+
+#add:active,
+#deleteButton:active,
+#softButton:active {
+    opacity: 0.6;
 }
 
 .done {
     text-decoration: line-through;
-    color: green;
+}
+
+i {
+    margin-left: 30px;
+    font-size: 25px !important;
 }

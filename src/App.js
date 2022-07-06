@@ -1,5 +1,4 @@
 import React from 'react';
-import TodoList from './components/TodoList'
 import Form from './components/Form'
 
 class TodoApp extends React.Component {
@@ -7,36 +6,21 @@ class TodoApp extends React.Component {
     super(props);
     this.state = {
       items: [],
-      text: ''
+      text: '',
+      ClassName: 'done'
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
 
- 
+
   render() {
     return (
-      <div classneme="app">
-        <h3>TODO</h3>
-        <TodoList
-          items={this.state.items}
-          onClickDelete={this.handleDelete}
-          onSoftDelete={this.softDelete}
-        />
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="new-todo">
-            What needs to be done?
-          </label>
-          <input
-            id="new-todo"
-            onChange={this.handleChange}
-            value={this.state.text}
-          />
-          <button>
-            Add #{this.state.items.length + 1}
-          </button>
-        </form>
-      </div>
+     <Form
+                items={this.state.items}
+                
+
+     />
     );
   }
 
@@ -55,8 +39,8 @@ class TodoApp extends React.Component {
       id: Date.now(),
     };
     this.setState(state => {
+      
       // 2. Zapracuj pridanie polozky newItem do pola items.
-
       let items = state.items;
       items.push(newItem);
 
@@ -69,9 +53,8 @@ class TodoApp extends React.Component {
 
   handleDelete = (item) => {
     this.setState(state => {
-      // 3. Zapracuj zmazanie polozky item z pola items.
-      let items = state.items;
-      
+
+      let items = state.items;      
       items = items.filter( i => i.id !== item.id)
       
       return {
@@ -83,15 +66,15 @@ class TodoApp extends React.Component {
 
   softDelete = (item) => {
     this.setState(state => {
-      let items = state.items;
- 
-       items.map((item) => {
+
+      let items = state.items;  
+
+      items.map(i => {
         return (
-          item.id == item.id ? item.className += "done" : item.className = ""  
+          item.id == item.id ? item.className = "done" : item.className = ""  
          )
       })
-      
-      console.log(item.className)
+
       return {
         items
       }
@@ -101,3 +84,36 @@ class TodoApp extends React.Component {
 }
 
 export default TodoApp;
+
+
+/*  <div >
+        <h3 className="title" >TODO</h3>
+        <div>
+            <form onSubmit={this.handleSubmit} className="wrapper">
+              <input 
+                id="input"
+                type="text"
+                onChange={this.handleChange}
+                value={this.state.text}
+              />
+              <button 
+                className="add" 
+                id="add">
+                Add #{this.state.items.length + 1}
+              </button>
+            </form>
+        </div>
+
+        <h5 htmlFor="input" className="subtitle">
+            What needs to be done?
+        </h5>
+
+          <TodoList
+          items={this.state.items}
+          onClickDelete={this.handleDelete}
+          onSoftDelete={this.softDelete}
+          className={this.ClassName}
+        />
+        
+      </div> */
+
