@@ -1,5 +1,8 @@
 import React from 'react';
 import Form from './components/Form'
+import TodoList from './components/TodoList'
+import Filter from "./components/Filter"
+
 
 class TodoApp extends React.Component {
   constructor(props) {
@@ -7,22 +10,101 @@ class TodoApp extends React.Component {
     this.state = {
       items: [],
       text: '',
-      ClassName: 'done'
+      class: ''
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    /* this.handleChange = this.handleChange.bind(this); */
   }
 
 
   render() {
     return (
-     <Form
-                items={this.state.items}
-                
+      <div >
+        <h3 className="title" >TODO</h3>
 
-     />
+        <Form 
+          submit={this.handleSubmit}
+          change={this.handleChange}
+          valueApp={this.state.value}
+          numbersOfItems={this.state.items.length}
+          status={this.state.status}
+        />
+
+        <h5 htmlFor="input" className="subtitle">
+            What needs to be done?
+        </h5>
+
+        <Filter 
+          allFunction={this.filterAll}
+          activeFunction={this.filterActive}
+          doneFunction={this.filterDone}
+        />
+
+        <TodoList
+            items={this.state.items}
+            onClickDelete={this.handleDelete}
+            onSoftDelete={this.softDelete}
+            className={this.ClassName}
+        />
+    </div>
     );
   }
+
+  filterAll = () => {
+    this.setState(state => {
+
+      let items = state.items;  
+
+      items.map(i => {
+        return (
+            i.status != true ? i.status = true : i.status = true  
+         )
+      })
+
+      return {
+        items
+      }
+
+  });
+}
+
+  filterActive = () => {
+    this.setState(state => {
+
+      let items = state.items;  
+
+      items.map(i => {
+        return (
+            i.class == "done" ? i.status = false : i.status = true
+         )
+      })
+
+      return {
+        items
+      }
+
+  });
+}
+
+
+  filterDone = () => {
+      this.setState(state => {
+  
+        let items = state.items;  
+  
+        items.map(i => {
+          return (
+              i.class != "done" ? i.status = false : i.status = true   
+           )
+        })
+  
+        return {
+          items
+        }
+  
+    });
+  }
+
 
   // 1. Prepis handleChange ako arrow function.
   handleChange = (e) => {
@@ -37,6 +119,7 @@ class TodoApp extends React.Component {
     const newItem = {
       text: this.state.text,
       id: Date.now(),
+      status: true
     };
     this.setState(state => {
       
@@ -71,7 +154,7 @@ class TodoApp extends React.Component {
 
       items.map(i => {
         return (
-          item.id == item.id ? item.className = "done" : item.className = ""  
+          item.id == item.id ? item.class = "done" : item.class = ""  
          )
       })
 
@@ -84,36 +167,4 @@ class TodoApp extends React.Component {
 }
 
 export default TodoApp;
-
-
-/*  <div >
-        <h3 className="title" >TODO</h3>
-        <div>
-            <form onSubmit={this.handleSubmit} className="wrapper">
-              <input 
-                id="input"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.text}
-              />
-              <button 
-                className="add" 
-                id="add">
-                Add #{this.state.items.length + 1}
-              </button>
-            </form>
-        </div>
-
-        <h5 htmlFor="input" className="subtitle">
-            What needs to be done?
-        </h5>
-
-          <TodoList
-          items={this.state.items}
-          onClickDelete={this.handleDelete}
-          onSoftDelete={this.softDelete}
-          className={this.ClassName}
-        />
-        
-      </div> */
 

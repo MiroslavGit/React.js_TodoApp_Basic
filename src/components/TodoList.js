@@ -7,9 +7,10 @@ class TodoList extends React.Component {
         <div>
           <ul>
             {this.props.items.map(item => (
-              <li  id="output" className={item.className} key={item.id}>{item.text}
-                <button id="deleteButton" className="delete" onClick={(e) => this.props.onClickDelete(item)}><i class="fa-solid fa-trash-can"></i></button>
-                <button id="softButton" className="soft" onClick={(e) => this.props.onSoftDelete(item)}><i class="fa-solid fa-circle-check"></i></button>
+              item.status === true &&
+              <li  id="output" className={item.class} key={item.id}>{item.text}
+                <button id="deleteButton" className="delete" onClick={(e) => this.props.onClickDelete(item)}><i class="fa-solid fa-trash-can"></i>Remove</button>
+                <button id="softButton" className="soft" onClick={(e) => this.props.onSoftDelete(item)}><i class="fa-solid fa-circle-check"></i>Done</button>
               </li> 
             ))}
           </ul>

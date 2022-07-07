@@ -112,3 +112,8 @@ i {
     margin-left: 30px;
     font-size: 25px !important;
 }
+
+.filter {
+    display: table;
+    margin: 0 auto;
+}
