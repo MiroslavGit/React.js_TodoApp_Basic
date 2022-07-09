@@ -6,17 +6,17 @@ class Form extends React.Component {
         return (
             <div>
                 <form onSubmit={this.props.submit} className="wrapper">
-                <input 
-                    id="input"
-                    type="text"
-                    onChange={this.props.change}
-                    value={this.props.valueApp}
-                />
-                <button 
-                    className="add" 
-                    id="add">
-                    Add #{this.props.numbersOfItems + 1} 
-                </button>
+                    <input 
+                        id="input"
+                        type="text"
+                        onChange={this.props.change}
+                        value={this.props.valueApp}
+                    />
+                    <button 
+                        className="add" 
+                        id="add">
+                        Add #{this.props.numbersOfItems + 1} 
+                    </button>
                 </form>
             </div>
         );

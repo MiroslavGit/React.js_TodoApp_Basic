@@ -108,7 +108,10 @@ class TodoApp extends React.Component {
 
   // 1. Prepis handleChange ako arrow function.
   handleChange = (e) => {
-    this.setState({ text: e.target.value });
+    this.setState({ 
+      text: e.target.value,
+      /* items: localStorage.getItem('items') */
+    });
   }
 
   handleSubmit = (e) => {
@@ -116,22 +119,32 @@ class TodoApp extends React.Component {
     if (!this.state.text.length) {
       return;
     }
+
+    let dateOfCreated = new Date()
+   
     const newItem = {
       text: this.state.text,
       id: Date.now(),
-      status: true
+      status: true,
+      dateOfCreated: dateOfCreated
     };
+
     this.setState(state => {
       
       // 2. Zapracuj pridanie polozky newItem do pola items.
       let items = state.items;
       items.push(newItem);
 
+      /* localStorage.setItem('items', items);
+ */
       return {
         items,
         text: ''
       };
     });
+
+
+
   }
 
   handleDelete = (item) => {

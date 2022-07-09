@@ -117,3 +117,7 @@ i {
     display: table;
     margin: 0 auto;
 }
+
+.dateOfCreated {
+    font-size: 15px;
+}
