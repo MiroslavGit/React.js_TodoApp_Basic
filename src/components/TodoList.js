@@ -5,9 +5,6 @@ import { format } from 'date-fns'
 
 // 4. Vytvor samostatny modul pre komponent TodoList a nasledne ho importuj v App.js.
 class TodoList extends React.Component {
-
-
-
     render() {
       return (
         <div>
